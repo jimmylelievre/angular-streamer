@@ -1,17 +1,19 @@
 <div class="tile">
-    <div class="title">
-      {{tileInfo.title}}
-    </div>
-  
-    <blockquote>
-        {{tileInfo.summary}}
-    </blockquote>
-  
-    <div class="actions">
-      <button type="button">Go!</button>
-    </div>
-  
-    <div class="waiter">
-      <div class="inner-waiter"></div>
-    </div>
+  <div class="title">
+    {{ tileInfo.title }}
   </div>
+
+  <blockquote>
+    {{ tileInfo.summary }}
+  </blockquote>
+
+  <div *ngIf="tileInfo.title === 'Students'; else other_button" class="actions">
+    <a routerLink="/student/list"><button type="button">Go!</button></a>
+  </div>
+
+  <ng-template #other_button> <button type="button">Go!</button></ng-template>
+
+  <div class="waiter">
+    <div class="inner-waiter"></div>
+  </div>
+</div>

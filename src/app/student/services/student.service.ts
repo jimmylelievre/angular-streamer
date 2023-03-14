@@ -17,6 +17,14 @@ export class StudentService {
     return this._httpClient.get<IStudent[]>(this.endpoint);
   }
 
+  findSimpleStudents(): Observable<
+    { id: number; nom: string; prenom: string; email: string }[]
+  > {
+    return this._httpClient.get<
+      { id: number; nom: string; prenom: string; email: string }[]
+    >(this.endpoint, { params: { fields: 'id,nom,prenom,email' } });
+  }
+
   public findOne(id: number): void {}
 
   public findByEmail(email: string): void {}
